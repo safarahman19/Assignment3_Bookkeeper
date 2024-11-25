@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-
-  <!--CSS files-->
-  <link rel='stylesheet' href="/Content/app.css" />
-  <link rel='stylesheet' href="/bootstrap/dist/css/bootstrap.min.css" />
-</head>
-<body>
-      <header>
+  <head>
+    <link rel='stylesheet' href="/Content/app.css" />
+    <link rel='stylesheet' href="/bootstrap/dist/css/bootstrap.min.css" />
+    <title>< Bookkeeper ></title>
+  </head>
+  <body>
+    <header>
         <!--NavBar-->
         <nav class="navbar navbar-expand-lg custom-navbar">
             <div class="container-fluid">
@@ -32,34 +27,25 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="/book-list">Browse Books</a>
                         </li>
                 </div>
             </div>
         </nav>
     </header>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Bookkeeper</h2>
+                <p>Welcome to our bookkeeper application, the best place to review your favourite books.</p>
+            </div>
+        </div>
+    </section>
 
-<!--Hero Section -->
-    <div class="jumbotron text-center mt-4">
-      <div class="block">
-        <h1 class="display-4">Welcome to Bookkeeper!</h1>
-        <p class="lead">Track your books and reviews.</p>
-        <a class="btn btn-primary btn-lg" href="/book-list" role="button">Browse Books</a>
-      </div>
-    </div>
-
-     <footer id="footer"  class="bg-light text-center py-3">
-      <div class="container">
-          <div class="logo">
-            <h2><span>Thanks For Visiting!</span></h2>
-            <p>You can reach me at...</p>
-          </div>
-          <h3>safa.rahman2@ontariotechu.net</h3>
-          <p>Copyright &copy; <%= new Date().getFullYear() %> Bookkeeper. All Rights Reserved.</p>
-      </div>
-    </footer>
+    
+    <footer class = "custom-footer text-dark text-center py-3 mt-4">
+        <p>&copy; 2024 Bookkeeper. All Rights Reserved.</p>
+  
 </body>
 </html>
-  
-

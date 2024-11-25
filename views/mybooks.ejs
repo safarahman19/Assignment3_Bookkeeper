@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title><%= My Books %></title>
+  <link rel='stylesheet' href="/Content/app.css" />
+  <link rel='stylesheet' href="/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <%- include('partials/header') %>
+<!--Navigation Bar -->
+
+<!--main content-->
+    <div class="container mt-5">
+        <h1 class="mb-4">My Books</h1>
+        <p> List of books in your collection</p>
+
+    <!--Book Table-->
+        <table class ="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (myBooks && myBooks.length > 0) { %>
+                    <% myBooks.forEach(book => { %>
+                        <tr>
+                            <td><%= book.name %></td>
+                            <td>
+                                <!--Remove button -->
+                                <form action="/mybooks/remove" method="POST" style="display": inline;">
+                                    <input type="hidden" name="name" value="<%= book.name %>">
+                                    <button class="btn btn-danger btn-sm" type="submit">Remove</button>
+                                </form>
+                        
+                                <!--Edit review button -->
+                                <button
+                                    class="btn btn-primary btn-sm"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#editReview<%= book._id %>"
+                                    aria-expanded="false"
+                                    aria-controls="editReview<%= book._id %>">
+                                    edit review
+                                </button>        
+                            </td>
+                        </tr>
+
+                        <!-- Edit Review Form -->
+                        <tr class="collapse" id="editReview<%= book._id %>">
+                            <td colspan="2">
+                                <form action="/mybooks/edit/<%= book._id %>" method="POST" class="p-3 border">
+                                    <h5>Edit Review for "<%= book.name %>"</h5>
+                                    <div class="mb-3"
+                                        <label for="stars<%= book._id %>" class="form-label">Ratings (1-5 Stars)</label>
+                                        <input
+                                            type="numbers"
+                                            name="stars"
+                                            id="stars<%= book._id %>"
+                                            class="form-control"
+                                            values="<%= book.review?.stars || 0 %>"
+                                            min="1"
+                                            max="5"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <lavel for="review<%= book._id %>" class="form-label">Review</label>
+                                        <textarea
+                                            name="review"
+                                            id="review<%= book._id %>"
+                                            class="form-control"
+                                            rows="4"
+                                            required><%= book.review?.text || '' %></textarea>
+                                    </div>
+                                    <button tpye="submit" class="btn btn-sucess btn-sm">Save Changes</button>
+                                    <button
+                                        class="btn btn-secondary btn-sm"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#editReview<%= book._id %>">
+                                        Cancel
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <td>
+                        <td colspan="2" class="text-center">No Books Added Yet.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Footer-->
+    <%- include('partials/footer') %>
+
+    <script src = "/Scripts/app.js"></script>
+    <script src = "/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src = "/jquery/dist/jquery.min.js"></script>
+  
+</body>
+</html>

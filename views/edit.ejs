@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' href='/Content/app.css' />
+  <title>Edit Book</title>
+
+  <link rel='stylesheet' href="/Content/app.css" />
+  <link rel='stylesheet' href="/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+        <header>
+        <!--NavBar-->
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand custom-navbar-title" href="/">BOOKKEEPER</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/books">My Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ratings">Ratings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/book-list">Browse Books</a>
+                        </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+<body>
+    <div class="container mt-8">
+        <div class="col-md-12">
+            <br>
+            <h3>Edit Book</h3>
+            <form action="/books/update/<%= book._id %>" method="POST">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= book.name %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="author"class="form-label">Author</label>
+                    <input type="text" id="author" name="author" value="<%= book.author %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="originallyPublished"class="form-label">Originally Published</label>
+                    <input type="text" id="originallyPublished" name="originallyPublished" value="<%= book.originallyPublished %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="description"class="form-label">Description</label>
+                    <textarea id="description" name="description" required><%= book.description %></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Book</button>
+                <a href="/books/edit/ <%= book._id %>/edit" class="btn btn-primary btn-sm">
+                <i class="bi bi=pencil-square"></i> Edit
+            </form>
+        </div>
+    </div>
+
+<script src = "/Scripts/app.js"></script>
+<script src = "/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src = "/jquery/dist/jquery.min.js"></script>
+  
+</body>
+</html>
